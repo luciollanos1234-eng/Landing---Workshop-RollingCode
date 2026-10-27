@@ -1,0 +1,50 @@
+.checkout-heading li:first-child:not([aria-current]) { background: transparent; border-color: #ffffff40; }
+.checkout-heading li[aria-current=step] { background: #0b0b0c; border-color: #0b0b0c; }
+.checkout-heading li.is-complete { background: #ffffff18; border-color: #ffffff80; }
+.purchase-form { scroll-margin-top: 28px; }
+.purchase-form > h3 { outline: none; }
+.purchase-form fieldset { border: 0; padding: 0; margin: 0; }
+.purchase-form .checkout-option { cursor: pointer; }
+.purchase-form .checkout-option input { flex: 0 0 auto; width: 16px; height: 16px; accent-color: #e0202a; }
+.purchase-form .checkout-option > span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.purchase-form .checkout-option > strong { white-space: nowrap; }
+.purchase-help { margin: 14px 0 20px; color: #52525b; font-size: 12px; line-height: 1.6; }
+.purchase-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px 16px; }
+.purchase-field { min-width: 0; display: flex; flex-direction: column; font-size: 13px; font-weight: 700; gap: 8px; }
+.purchase-field--wide { grid-column: 1 / -1; }
+.purchase-field > span > span { color: #c71d2a; }
+.purchase-field input { width: 100%; min-height: 48px; min-width: 0; border: 2px solid #d4d4d8; border-radius: 14px; background: white; color: #0b0b0c; padding: 12px 14px; font-size: 16px; font-weight: 400; }
+.purchase-field input::placeholder { color: #747480; opacity: 1; }
+.purchase-field input[aria-invalid=true] { border-color: #c71d2a; }
+.purchase-field .purchase-error { color: #b01527; font-size: 12px; line-height: 1.5; font-weight: 600; }
+.purchase-error-summary { margin-top: 20px; padding: 12px; border-radius: 10px; border: 1px solid #f0b7bd; background: #fff0f1; color: #9e1020; font-size: 12px; }
+.purchase-actions { display: flex; align-items: stretch; gap: 12px; margin-top: 26px; }
+.purchase-actions .ticket-button { margin: 0; flex: 1; font-size: 14px; }
+.purchase-back { border: 1px solid #9a9aa5; background: white; color: #26262a; border-radius: 999px; padding: 12px 20px; font-size: 13px; font-weight: 800; }
+.purchase-back:hover { background: #f3f3f5; }
+.purchase-test-note { padding: 16px; margin-bottom: 24px; border: 1px solid #ded8ca; background: #f9f6ed; border-radius: 14px; color: #5f4c24; font-size: 12px; line-height: 1.65; }
+.purchase-test-note strong { color: #433617; font-size: 13px; }
+.purchase-test-note p { margin-top: 6px; }
+.purchase-test-note b { font-weight: 800; }
+.purchase-success { text-align: center; }
+.purchase-success__mark { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: #e6f3e9; color: #246940; font-size: 30px; margin: 22px auto; }
+.purchase-success > p { font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; }
+.purchase-success > .purchase-help { font-size: 12px; }
+.purchase-operation { display: grid; gap: 8px; margin: 24px 0; padding: 18px 12px; background: #f4f4f6; border: 1px solid #dddde2; border-radius: 14px; }
+.purchase-operation span { font-size: 12px; color: #52525b; }
+.purchase-operation strong { font-family: ui-monospace,monospace; font-size: 18px; overflow-wrap: anywhere; }
+.purchase-receipt-email { font-size: 12px; color: #d4d4d8; overflow-wrap: anywhere; margin-top: 20px; }
+@media(max-width:600px) {
+  .purchase-fields { grid-template-columns: 1fr; gap: 18px; }
+  .purchase-field input { font-size: 16px; }
+  .purchase-actions { gap: 8px; }
+  .purchase-actions .ticket-button { font-size: 12px; padding-inline: 14px; }
+  .purchase-back { padding-inline: 16px; font-size: 12px; }
+  .purchase-operation strong { font-size: 15px; }
+  .purchase-test-note { padding: 12px; font-size: 11px; }
+}
+@media(max-width:360px) {
+  .purchase-actions { flex-direction: column-reverse; }
+  .purchase-actions > button { min-height: 48px; }
+  .quantity-control { flex-wrap: wrap; }
+}

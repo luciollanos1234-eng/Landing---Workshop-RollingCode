@@ -17,9 +17,9 @@ const socialLinks = [
 
 function Footer() {
   return (
-    <footer className="mt-16 border-t border-borde-tarjeta bg-superficie py-10">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4">
-        <img src={logo} alt="RollingCode" className="h-14 w-auto" />
+    <footer className="site-footer">
+      <div className="landing-container footer-content">
+        <img src={logo} alt="RollingCode" className="footer-logo" />
 
         <nav aria-label="Redes sociales">
           <ul className="flex flex-wrap justify-center gap-4">

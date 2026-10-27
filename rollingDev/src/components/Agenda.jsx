@@ -1,67 +1,47 @@
 
+import { useEffect, useRef } from 'react'
+
 const scheduleData = [
   { time: '18:00', title: 'Acreditación y bienvenida', speaker: '' },
   { time: '18:20', title: 'Tu primer día como developer', speaker: 'Daniela Cardozo' },
   { time: '18:40', title: 'De cero a tu primer proyecto', speaker: 'Franco Díaz' },
-  { time: '19:00', title: 'Armá tu portfolio con IA', speaker: 'Gaston' },
+  { time: '19:00', title: 'Armá tu portfolio con IA', speaker: 'Gastón' },
   { time: '19:20', title: 'Git y GitHub sin miedo', speaker: 'Mauro' },
-  { time: '19:40', title: 'Tu primer backend con Node', speaker: 'Jose Díaz' },
-  { time: '20:00', title: 'Preparate para tu primera entrevista', speaker: 'Tomas Gomez' },
+  { time: '19:40', title: 'Tu primer backend con Node', speaker: 'José Díaz' },
+  { time: '20:00', title: 'Preparate para tu primera entrevista', speaker: 'Tomás Gómez' },
   { time: '20:20', title: 'Mi primer trabajo en IT', speaker: 'Pablo Basso' },
-  { time: '20:40', title: 'Testing: cómo no romper todo', speaker: 'Julian Martin' },
-  { time: '21:00', title: 'Diseño para developers', speaker: 'Tomas Escudero' },
-  { time: '21:20', title: 'Tu primera base de datos', speaker: 'Andres Perlo' },
+  { time: '20:40', title: 'Testing: cómo no romper todo', speaker: 'Julián Martín' },
+  { time: '21:00', title: 'Diseño para developers', speaker: 'Tomás Escudero' },
+  { time: '21:20', title: 'Tu primera base de datos', speaker: 'Andrés Perlo' },
   { time: '21:40', title: 'Preguntas y networking', speaker: '' }
 ];
 
 
-const ScheduleItem = ({ time, title, speaker }) => (
-  <li className="py-3 flex flex-row gap-4 items-start border-b bg-negro-pagina last:border-b-0">
-    <span className="text-red-500 font-mono font-semibold min-w-15">
-      {time}
-    </span>
-    <div>
-      <h3 className="font-medium text-gray-100">{title}</h3>
-      {speaker && (
-        <p className="text-gray-400 text-sm mt-0.5">{speaker}</p>
-      )}
-    </div>
-  </li>
-);
-
 const Agenda = () => {
-  return (
-    <div className="min-h-screen bg-negro-pagina text-gray-100 flex items-center justify-center p-4 font-jakarta">
-      <div className="w-full max-w-4xl color-gris-fuerte rounded-lg shadow-2xl overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-          <div className="p-8 flex flex-col justify-start border-b md:border-b-0 md:border-r color-gris-fuerte">
-            <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-2">
-              Agenda
-            </p>
-            <h1 className="text-2xl md:text-3xl font-bold leading-tight mb-4">
-              Jueves 19 de<br />noviembre
-            </h1>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Diez charlas cortas para salir con un plan claro.<br />
-              Al final queda tiempo para preguntas y networking.
-            </p>
-          </div>
-          <div className="md:col-span-2 p-6">
-            <ul className="divide-y">
-              {scheduleData.map((event, index) => (
-                <ScheduleItem
-                  key={index}
-                  time={event.time}
-                  title={event.title}
-                  speaker={event.speaker}
-                />
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+  const list = useRef(null)
 
-export default Agenda;
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        entry.target.classList.add('is-revealed')
+        observer.unobserve(entry.target)
+      })
+    }, { threshold: 0.15 })
+    const rows = Array.from(list.current.children)
+    rows.forEach(row => observer.observe(row))
+    return () => {
+      observer.disconnect()
+      rows.forEach(row => row.classList.remove('is-revealed'))
+    }
+  }, [])
+
+  return (
+  <section id="agenda" className="landing-container landing-section agenda-layout" aria-labelledby="agenda-title">
+    <header className="agenda-intro"><p className="section-eyebrow">Agenda</p><h2 id="agenda-title" className="section-title">Jueves 19 de<br />noviembre</h2><p>Diez charlas cortas para salir con un plan claro.<br />Al final queda tiempo para preguntas y networking.</p></header>
+    <ul ref={list} className="agenda-list">{scheduleData.map(event => <li key={event.time}><time>{event.time}</time><div><h3>{event.title}</h3>{event.speaker && <p>{event.speaker}</p>}</div></li>)}</ul>
+  </section>
+)
+}
+export default Agenda
