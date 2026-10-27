@@ -377,3 +377,39 @@
   .site-footer a { width: 44px; height: 44px; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none!important; transition: none!important; } }
+
+/* Mobile speaker carousel; the desktop grid keeps its original layout. */
+.speaker-carousel-tools, .speaker-carousel-dots { display: none; }
+.location-map--embedded { padding: 10px; border-radius: 26px; background: linear-gradient(145deg,#202024,#111113 65%); }
+.location-map__embed { display: block; width: 100%; height: 320px; border: 0; border-radius: 17px; filter: grayscale(1) invert(.92) contrast(.88); }
+.location-map__destination { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; padding: 22px 10px 12px; }
+.location-map__address { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.location-map__badge { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 48px; background: #e0202a10; border: 1px solid #e0202a35; border-radius: 12px; }
+.location-map__badge img { width: 22px; height: 22px; }
+.location-map__address small { display: block; color: #ef6975; font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px; }
+.location-map__address strong { display: block; font-size: 19px; font-weight: 800; letter-spacing: -.5px; }
+.location-map__address p { font-size: 11px; color: #a1a1aa; margin-top: 4px; }
+.location-map__directions { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 44px; padding: 10px 15px; border: 1px solid #48484f; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.location-map__directions:hover { border-color: #e0202a; background: #e0202a0d; }
+.location-map__directions span { color: #ff6172; }
+@media(max-width:700px) {
+  .speaker-carousel-tools { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; }
+  .speaker-carousel-tools p { color: #a1a1aa; font-size: 10px; line-height: 1.5; max-width: 220px; }
+  .speaker-carousel-tools > div { display: flex; gap: 8px; }
+  .speaker-carousel-tools button { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3a3a40; background: transparent; color: white; font-size: 26px; line-height: 1; }
+  .speaker-carousel-tools button:disabled { opacity: .3; cursor: default; }
+  .speaker-grid { position: relative; display: flex; align-items: stretch; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; margin-top: 20px; padding-block: 4px 12px; }
+  .speaker-grid::-webkit-scrollbar { display: none; }
+  .speaker-grid .speaker-card { display: flex; flex-direction: column; flex: 0 0 min(82%,300px); padding: 0; border-radius: 16px; scroll-snap-align: start; }
+  .speaker-grid::after { content: ''; flex: 0 0 max(0px,calc(100% - min(82%,300px) - 14px)); }
+  .speaker-grid .speaker-card__photo { aspect-ratio: 4 / 5; margin-bottom: 16px; border-radius: 15px 15px 0 0; }
+  .speaker-grid .speaker-card__image { height: 100%; aspect-ratio: auto; object-fit: cover; object-position: center top; border-radius: 0; margin: 0; transform: none; }
+  .speaker-grid .speaker-card__name { margin: 0 14px 12px; font-size: 16px; }
+  .speaker-grid .speaker-card__topic { align-self: flex-start; min-height: 0; margin: 0 14px 12px; padding: 7px 9px; font-size: 11px; }
+  .speaker-grid .speaker-card__description { margin: 0 14px 18px; font-size: 12px; line-height: 1.6; }
+  .speaker-carousel-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 0; margin-top: 4px; }
+  .speaker-carousel-dots button { display: grid; place-items: center; width: 22px; height: 44px; border: 0; padding: 0; background: transparent; }
+  .speaker-carousel-dots span { display: block; width: 4px; height: 4px; border-radius: 999px; background: #52525b; transition: width 180ms ease,background 180ms ease; }
+  .speaker-carousel-dots button[aria-current=true] span { width: 16px; background: #e0202a; }
+  .location-map__embed { height: 280px; }
+}

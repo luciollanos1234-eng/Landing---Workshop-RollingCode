@@ -8,6 +8,7 @@ import Sponsors from './components/Sponsors'
 import SponsorForm from './components/SponsorForm'
 import Footer from './components/Footer'
 import MobileTicketBar from './components/MobileTicketBar'
+import ScrollRobot from './components/ScrollRobot'
 
 export default function App() {
   return <div id="inicio" className="site-page">
@@ -18,11 +19,12 @@ export default function App() {
       <Speakers />
       <Agenda />
       <ComprarEntrada />
-      <ComoLlegar />
       <Sponsors />
       <SponsorForm />
+      <ComoLlegar />
     </main>
     <Footer />
     <MobileTicketBar />
+    <ScrollRobot />
   </div>
 }
