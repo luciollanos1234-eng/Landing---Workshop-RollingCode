@@ -235,6 +235,23 @@
 .site-footer a img { width: 18px; height: 18px; }
 .skip-link { position: fixed; top: -80px; left: 20px; z-index: 50; padding: 14px; background: white; color: black; border-radius: 8px; }
 .skip-link:focus { top: 20px; }
+.mobile-menu-toggle { display: none; }
+.mobile-menu { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: max(24px,env(safe-area-inset-top,0px)) 24px max(24px,env(safe-area-inset-bottom,0px)); border: 1px solid #e0202a50; color: white; background: linear-gradient(150deg,#160a0cde,#0b0b0ce8 65%,#3b0c14cc); overflow-y: auto; }
+.mobile-menu::backdrop { background: #08080975; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.mobile-menu[open] { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.mobile-menu__header { display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 100%; }
+.mobile-menu__header img { width: 145px; height: auto; }
+.mobile-menu__close { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; padding: 0; margin-top: auto; border: 1px solid #ffffff25; border-radius: 50%; background: #ffffff05; color: white; }
+.mobile-menu__close svg { display: block; }
+.site-nav .mobile-menu__links { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1 0 auto; width: 100%; min-height: 0; gap: 12px; padding-block: 24px; }
+.mobile-menu__links a { display: flex; justify-content: center; align-items: center; min-height: 52px; width: min(100%,320px); padding: 12px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-size: 15px; font-weight: 800; border-bottom: 1px solid #ffffff10; }
+.mobile-menu__links a:last-child { color: #ff7883; border-color: #e0202a50; }
+@media(max-width:700px) {
+  .site-nav > nav.landing-container { min-height: 80px; flex-wrap: nowrap; justify-content: space-between; padding-block: 14px; }
+  .site-nav nav > .desktop-navigation { display: none; }
+  .mobile-menu-toggle { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; flex-shrink: 0; width: 44px; height: 44px; padding: 10px; border: 1px solid #e0202a60; border-radius: 12px; background: #171114; }
+  .mobile-menu-toggle span { display: block; width: 21px; height: 2px; background: #f5e8ea; border-radius: 2px; }
+}
 .mobile-ticket-bar { display: none; }
 @media(max-width:600px) {
   .site-page { padding-bottom: calc(94px + env(safe-area-inset-bottom,0px)); }
