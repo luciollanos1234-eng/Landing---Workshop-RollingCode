@@ -1,4 +1,4 @@
-# RollingDev
+# Landing - Workshop RollingCode
 
 <img width="910" height="300" alt="logo-rolling-blanco" src="https://github.com/user-attachments/assets/a08facb2-8190-4b1a-8685-3c41683a5aad" />
 
