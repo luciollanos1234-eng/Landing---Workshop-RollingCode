@@ -8,27 +8,29 @@ import Sponsors from './components/Sponsors';
 import SponsorForm from './components/SponsorForm';
 import Footer from './components/Footer';
 import MobileTicketBar from './components/MobileTicketBar';
-import ScrollRobot from './components/ScrollRobot';
+import Chatbot from './components/Chatbot';
 
 export default function App() {
   return (
-    <div id="inicio" className="site-page">
-      <a className="skip-link" href="#contenido">
-        Saltar al contenido
-      </a>
-      <Navbar />
-      <main id="contenido">
-        <Header />
-        <Speakers />
-        <Agenda />
-        <ComprarEntrada />
-        <ComoLlegar />
-        <Sponsors />
-        <SponsorForm />
-      </main>
-      <Footer />
-      <MobileTicketBar />
-      <ScrollRobot />
-    </div>
+    <>
+      <div id="inicio" className="site-page">
+        <a className="skip-link" href="#contenido">
+          Saltar al contenido
+        </a>
+        <Navbar />
+        <main id="contenido">
+          <Header />
+          <Speakers />
+          <Agenda />
+          <ComprarEntrada />
+          <ComoLlegar />
+          <Sponsors />
+          <SponsorForm />
+        </main>
+        <Footer />
+        <MobileTicketBar />
+      </div>
+      <Chatbot />
+    </>
   );
 }
