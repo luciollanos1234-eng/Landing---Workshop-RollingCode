@@ -8,6 +8,7 @@ import Sponsors from './components/Sponsors';
 import SponsorForm from './components/SponsorForm';
 import Footer from './components/Footer';
 import MobileTicketBar from './components/MobileTicketBar';
+import ScrollRobot from './components/ScrollRobot';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       </main>
       <Footer />
       <MobileTicketBar />
+      <ScrollRobot />
     </div>
   );
 }

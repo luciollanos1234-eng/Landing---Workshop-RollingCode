@@ -48,22 +48,13 @@ const ComoLlegar = () => {
           </a>
         </div>
       </div>
-      <a
-        href={mapsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="location-map"
-        aria-label="Ver la ubicación de Rolling Code School en Google Maps"
-      >
-        <div className="location-map__streets" aria-hidden="true">
-          <span className="location-map__pin">●</span>
+      <div className="location-map location-map--embedded">
+        <iframe className="location-map__embed" title="Mapa de Rolling Code School, General Paz 576, San Miguel de Tucumán" src="https://www.google.com/maps?q=General%20Paz%20576%2C%20San%20Miguel%20de%20Tucum%C3%A1n%2C%20Argentina&z=17&output=embed" width="600" height="360" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+        <div className="location-map__destination">
+          <div className="location-map__address"><span className="location-map__badge" aria-hidden="true"><img src={location} alt="" /></span><div><small>Nos encontramos acá</small><strong>Gral. Paz 576</strong><p>Rolling Code School · Entrepiso</p></div></div>
+          <a className="location-map__directions" href={mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar <span aria-hidden="true">↗</span></a>
         </div>
-        <div className="location-map__caption">
-          <strong>Rolling Code School</strong>
-          <span>Gral. Paz 576, San Miguel de Tucumán</span>
-          <small>Abrir mapa ↗</small>
-        </div>
-      </a>
+      </div>
     </section>
   );
 };

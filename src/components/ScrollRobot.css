@@ -1,0 +1,143 @@
+.scroll-robot {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .scroll-robot {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 68px;
+    height: 128px;
+    z-index: 25;
+    pointer-events: none;
+  }
+  .scroll-robot__figure {
+    display: block;
+    width: 68px;
+    height: 104px;
+    filter: drop-shadow(0 4px 5px #0005);
+  }
+  .scroll-robot__link {
+    display: block;
+    width: 68px;
+    height: 104px;
+    pointer-events: auto;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    border-radius: 28px;
+  }
+  .scroll-robot[data-dragging='true'] .scroll-robot__link {
+    cursor: grabbing;
+  }
+  .scroll-robot__close {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-left: 42px;
+    border: 1px solid #52525b;
+    border-radius: 50%;
+    background: #111113;
+    color: #d4d4d8;
+    font-size: 18px;
+    line-height: 1;
+    pointer-events: auto;
+  }
+  .scroll-robot__leg {
+    transform-box: view-box;
+    transform-origin: 38px 84px;
+  }
+  .scroll-robot__arm {
+    transform-box: view-box;
+    transform-origin: 38px 64px;
+  }
+  .scroll-robot[data-walking='true'] .scroll-robot__leg--left,
+  .scroll-robot[data-walking='true'] .scroll-robot__arm--right {
+    animation: robot-step 360ms ease-in-out infinite alternate;
+  }
+  .scroll-robot[data-walking='true'] .scroll-robot__leg--right,
+  .scroll-robot[data-walking='true'] .scroll-robot__arm--left {
+    animation: robot-step 360ms ease-in-out infinite alternate-reverse;
+  }
+  .scroll-robot[data-walking='true'] .scroll-robot__body {
+    animation: robot-bob 360ms ease-in-out infinite alternate;
+  }
+  .scroll-robot__bubble {
+    position: absolute;
+    top: 24px;
+    right: 76px;
+    width: 198px;
+    padding: 14px 16px;
+    border: 1px solid #e0202a65;
+    border-radius: 16px 16px 4px 16px;
+    background: #191113f5;
+    box-shadow: 0 8px 24px #0004;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 220ms ease;
+  }
+  .scroll-robot__bubble strong {
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+  .scroll-robot__bubble span {
+    display: block;
+    margin-top: 6px;
+    color: #ff8995;
+    font-size: 11px;
+  }
+  .scroll-robot[data-bubble-side='right'] .scroll-robot__bubble {
+    right: auto;
+    left: 76px;
+    border-radius: 16px 16px 16px 4px;
+  }
+  .scroll-robot[data-greeting='true'] .scroll-robot__bubble {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .scroll-robot[data-greeting='true'] .scroll-robot__arm--right {
+    transform-origin: 52px 65px;
+    animation: robot-wave 520ms ease-in-out infinite alternate;
+  }
+}
+@keyframes robot-wave {
+  from {
+    transform: rotate(-110deg);
+  }
+  to {
+    transform: rotate(-150deg);
+  }
+}
+@keyframes robot-step {
+  from {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
+}
+@keyframes robot-bob {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-robot * {
+    animation: none !important;
+  }
+}
