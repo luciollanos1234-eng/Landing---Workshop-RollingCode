@@ -1,7 +1,7 @@
-import location from "../assets/ubicacion.svg";
+import location from '../assets/ubicacion.svg';
 
 const mapsUrl =
-  "https://www.google.com/maps/search/?api=1&query=Rolling+Code+School+General+Paz+576+San+Miguel+de+Tucuman";
+  'https://www.google.com/maps/search/?api=1&query=Rolling+Code+School+General+Paz+576+San+Miguel+de+Tucuman';
 
 const ComoLlegar = () => {
   return (
